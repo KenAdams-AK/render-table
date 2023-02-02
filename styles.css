@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {
+  --primary-color: hsl(208, 97%, 47%);
+  --secondary-color: hsl(225, 71%, 38%);
+  --dark-color: hsl(208, 100%, 13%);
+  --light-color: hsl(0, 0%, 96%);
+  --grey-color: hsl(0, 0%, 47%);
+  --success-color: hsl(120, 39%, 54%);
+  --error-color: hsl(2, 64%, 58%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+}
+
+table, th, td {
+  border: 1px solid var(--dark-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.container {
+  width: 95vw;
+  margin: 0 auto;
+}
+
+.table__title {
+  text-align: center;
+  font-size: 2rem;
+  margin: .5rem;
+}
+
+.buttons__container {
+  display: inline-flex;
+  gap: .5rem;
+  margin: .5rem;
+}
+
+.btn {
+  padding: .75em;
+  border: none;
+  text-transform: uppercase;
+  color: var(--light-color);
+  border-radius: .5em;
+  cursor: pointer;
+  box-shadow: 0 0 5px var(--primary-color);
+  transition: all .3s;
+}
+
+.btn:hover {
+  opacity: .75;
+}
+
+.btn:active {
+  transform: scale(.95);
+}
+
+.buttons__btn-add-user {
+  background-color: var(--primary-color);
+}
+
+.buttons__btn-clear-storage {
+  background-color: var(--success-color);
+}
+
+.buttons__edit-btn {
+  background-color: var(--primary-color);
+}
+
+.buttons__remove-btn {
+  background-color: var(--error-color);
+}
+
+.buttons__cancel-btn {
+  background-color: var(--grey-color);
+}
+
+.buttons__save-btn {
+  background-color: var(--success-color);
+}
+
+.table__errors-container {
+  color: var(--error-color);
+  margin: 0.5rem;
+}
+
+.table__table {
+  margin: 1.5rem 0;
+}
+
+.table__head {
+  background-color: var(--grey-color);
+  color: var(--light-color);
+}
+
+.colgroup__column-action-buttons {
+  background-color: var(--secondary-color);
+}
+
+.table__head th:not([data-column-name = 'id']) {
+  min-width: 100px;
+}
+
+.table__head th[data-order='desc'],
+.table__head th[data-order='asc'] {
+  position: relative;
+}
+
+.table__head th[data-order='desc']:not([colspan])::before {
+  content: " \2193"; /*up arrow*/
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+}
+
+.table__head th[data-order='asc']:not([colspan])::after {
+  content: " \2191"; /*up down*/
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  color: var(--success-color);
+}
+
+.table__head-row > th:hover:not([colspan], [data-column-name="action-buttons"]),
+.table__head-row-nested > th:hover {
+  background-color: var(--dark-color);
+  cursor: pointer;
+}
+
+.table__row > th,
+.table__row > td{
+  padding: .65em;
+}
+
+.table__row > td[data-column-name='action-buttons'] {
+  text-align: center;
+}
+
+.skeleton {
+  width: 100%;
+  height: 0.25em;
+  margin-bottom: 0.25em;
+  border-radius: .125em;
+  background-color: var(--grey-color);
+
+  animation: skeleton-loading 1.3s linear infinite alternate;
+}
+
+.table__body-row:hover {
+  background-color: var(--grey-color);
+}
+
+.table__body-row > th:hover,
+.table__body-row > td:hover:not([data-column-name="action-buttons"]) {
+  cursor: pointer;
+}
+
+.table__body-row > td .skeleton:last-child {
+  width: 80%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--grey-color);
+  }
+  
+  100% {
+    background-color: transparent;
+  }
+}
+
+.modal__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(.15em);
+
+  z-index: 1;
+}
+
+.modal__overlay.opened {
+  display: block;
+}
+
+.modal__body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light-color);
+  padding: 1rem;
+  border-radius: .5rem;
+  color: var(--dark-color);
+  min-width: 320px;
+
+  z-index: 1;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  opacity: .75;
+  color: var(--dark-color);
+}
+
+.modal__header {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.modal__main li {
+  list-style: none;
+  margin-left: 1em;
+}
+
+.modal__main .id {
+  font-weight: bold;
+}
+
+.modal__form input{
+  width: 100%;
+}
+
+.modal__form fieldset {
+  border: none;
+}
+
+.modal__form button[type='submit'] {
+  margin: 1.7rem 0 .5rem 0;
+  width: 100%;
+}
+
+label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+label ~ input {
+  display: block;
+  padding: .5em;
+  margin-top: 0.5rem;
+  outline: none;
+}

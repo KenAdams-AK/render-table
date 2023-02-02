@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="script.js" defer></script>
+
+  <title>Render Users Table</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header"></header>
+
+    <main class="main">
+      <section class="table">
+        <h2 class="table__title">Users Table</h2>
+
+        <div class="buttons__container">
+          <button class="buttons__btn-add-user btn">add user</button>
+          <button class="buttons__btn-clear-storage btn">clear local storage</button>
+        </div>
+
+        <div class="table__errors-container"></div>
+
+        <table class="table__table">
+
+          <colgroup class="table__colgroup">
+            <col class="colgroup__column-id">
+            <col class="colgroup__column-name">
+            <col class="colgroup__column-email">
+            <col class="colgroup__column-city">
+            <col class="colgroup__column-street">
+            <col class="colgroup__column-suit">
+            <col class="colgroup__column-company">
+            <col class="colgroup__column-zipcode">
+            <col class="colgroup__column-action-buttons">
+          </colgroup>
+          <thead class="table__head">
+            <tr class="table__head-row table__row">
+              <th rowspan="2" data-column-name="id" data-order="desc">Id</th>
+              <th rowspan="2" data-column-name="name" data-order="desc">Full Name</th>
+              <th rowspan="2" data-column-name="email" data-order="desc">Email</th>
+              <th colspan="3" data-column-name="address" data-order="desc">Address</th>
+              <th rowspan="2" data-column-name="company" data-nested-prop="name" data-order="desc">Company Name</th>
+              <th rowspan="2" data-column-name="address" data-nested-prop="zipcode" data-order="desc">Zipcode</th>
+              <th rowspan="2" data-column-name="action-buttons">Action Buttons</th>
+            </tr>
+            <tr class="table__head-row-nested table__row">
+              <th data-column-name="address" data-nested-prop="city" data-order="desc">City</th>
+              <th data-column-name="address" data-nested-prop="street" data-order="desc">Street</th>
+              <th data-column-name="address" data-nested-prop="suite" data-order="desc">Suite</th>
+            </tr>
+          </thead>
+          <tbody class="table__body"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="footer"></footer>
+  </div>
+
+  <div class="modal__overlay">
+  </div>
+</body>
+
+<template id="table-row-template">
+  <tr data-row-id class="table__body-row table__row">
+    <th data-column-name="id">
+      <div class="skeleton"></div>
+    </th>
+    <td data-column-name="name">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-column-name="email">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-nested-prop="city">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-nested-prop="street">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-nested-prop="suite">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-column-name="company">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-column-name="zipcode">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+    <td data-column-name="action-buttons">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </td>
+  </tr>
+</template>
+
+<template id="action-buttons-template">
+  <div class="buttons__container">
+    <button class="buttons__edit-btn btn">Edit</button>
+    <button class="buttons__remove-btn btn">Remove</button>
+  </div>
+</template>
+
+<template id="action-buttons-on-edit-template">
+  <div class="buttons__container">
+    <button class="buttons__cancel-btn btn">Cancel</button>
+    <button class="buttons__save-btn btn">Save</button>
+  </div>
+</template>
+
+</html>
